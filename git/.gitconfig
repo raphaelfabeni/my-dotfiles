@@ -1,0 +1,70 @@
+[user]
+    name = Raphael Fabeni
+    email = rapha.fabeni@gmail.com
+
+[github]
+    user = raphaelfabeni
+
+[core]
+    excludesfile = ~/.gitignore_global
+    editor = vim
+    filemode = false
+    trustctime = false
+
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+
+[credential]
+    helper = osxkeychain
+
+[grep]
+    lineNumber = true
+
+[help]
+    autocorrect = 1
+
+[difftool]
+    prompt = false
+
+[mergetool]
+    prompt = false
+
+[push]
+    default = simple
+
+[fetch]
+  prune = true
+
+[diff]
+    renames = copies
+    tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
+
+[merge]
+    tool = Kaleidoscope
+    conflictstyle = diff3
+    defaultToUpstream = true
+[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+

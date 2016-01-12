@@ -1,0 +1,72 @@
+" =======================================
+" .vimrc file
+" =======================================
+
+" initial settings (specific for vundle)
+set nocompatible
+filetype off
+
+" set vundle as plugin manager
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+filetype plugin indent on
+
+" =======================================
+" Plugins
+" =======================================
+
+" Emmet vim
+Bundle 'mattn/emmet-vim'
+
+" Editor config
+Bundle 'editorconfig/editorconfig-vim'
+
+" =======================================
+" Themes
+" =======================================
+Bundle 'baskerville/bubblegum'
+
+" =======================================
+" My default configs
+" =======================================
+syntax enable
+set encoding=utf-8
+
+" tab
+set tabstop=2 
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+set expandtab 
+
+" interface
+set wildmenu        " set vim menu
+set ruler           " show cursor position
+set cursorline      " hightlight for actual line
+set number          " show numbers
+set hlsearch        " set highlight for search
+set nowrap          " set no wrap for big lines
+set nobackup        " set no backup
+set incsearch
+set background=light
+set backspace=2     " fix backspace bug [dont really know why :( ]
+hi link htmlLink NONE "remove underline from links in html pages
+
+" =======================================
+" Files syntax
+" =======================================
+autocmd BufNewFile,BufRead {*.html.ejs,*.erb} set syntax=html
+autocmd BufNewFile,BufRead {Gemfile,Gemfile.lock,*.ru} set syntax=ruby
+autocmd BufNewFile,BufRead *.json set syntax=javascript
+
+" =======================================
+" Maps
+" =======================================
+nmap <c-n> :bn<CR> " map (ctrl + n) => :bn // buffer next
+nmap <c-p> :bp<CR> " map (ctrl + p) => :bp // buffer prev
+
+" =======================================
+" Colorscheme
+" =======================================
+colorscheme bubblegum-256-light

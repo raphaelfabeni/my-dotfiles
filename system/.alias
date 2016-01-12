@@ -1,0 +1,21 @@
+# ls
+
+LS_COLORS=`is-supported "ls --color" --color -G`
+LS_TIMESTYLEISO=`is-supported "ls --time-style=long-iso" --time-style=long-iso`
+LS_GROUPDIRSFIRST=`is-supported "ls --group-directories-first" --group-directories-first`
+
+unset LS_COLORS LS_TIMESTYLEISO LS_GROUPDIRSFIRST
+
+# Network
+
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+
+# Recursively remove Apple meta files
+
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
+alias cleanupad="find . -type d -name '.AppleD*' -ls -exec /bin/rm -r {} \;"
+
+# Miscellaneous
+
+alias speedtest="wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
