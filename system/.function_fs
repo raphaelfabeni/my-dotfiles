@@ -1,25 +1,21 @@
 # Create a new directory and enter it
-
 mk() {
     mkdir -p "$@" && cd "$@"
 }
 
 # Fuzzy find file/dir
-
 ff() {  find . -type f -iname "$1";}
 fff() { find . -type f -iname "*$1*";}
 fd() {  find . -type d -iname "$1";}
 fdf() { find . -type d -iname "*$1*";}
 
 # Show disk usage of current folder, or list with depth
-
 duf() {
     du --max-depth=${1:-0} -c | sort -r -n | awk '{split("K M G",v); s=1; while($1>1024){$1/=1024; s++} print int($1)v[s]"\t"$2}'
 }
 
 # Extract many types of compress files
 # Source: http://nparikh.org/notes/zshrc.txt
-
 extract() {
     if [ -f "$1" ]; then
         case "$1" in
@@ -44,7 +40,6 @@ extract() {
 }
 
 # Check if resource is served compressed
-
 check_compression() {
     curl --write-out 'Size (uncompressed) = %{size_download}\n' --silent --output /dev/null $1
     curl --header 'Accept-Encoding: gzip,deflate,compress' --write-out 'Size (compressed) =   %{size_download}\n' --silent --output /dev/null $1
@@ -52,7 +47,6 @@ check_compression() {
 }
 
 # Get gzipped file size
-
 gz() {
     local ORIGSIZE=$(wc -c < "$1")
     local GZIPSIZE=$(gzip -c "$1" | wc -c)
@@ -62,7 +56,6 @@ gz() {
 }
 
 # Create a data URL from a file
-
 dataurl() {
     local MIMETYPE=$(file --mime-type "$1" | cut -d ' ' -f2)
     if [[ $MIMETYPE == "text/*" ]]; then
@@ -72,9 +65,17 @@ dataurl() {
 }
 
 # Clean caches
-
 cleanup() {
     is-executable npm && npm cache clean
     is-executable brew && brew cleanup
     is-executable brew && brew cask cleanup
+}
+
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+    local port="${1:-8000}"
+    sleep 1 && open "http://localhost:${port}/" &
+    # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+    # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+    python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port"
 }
