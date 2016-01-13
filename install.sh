@@ -22,7 +22,7 @@ ln -sfv "$DOTFILES_DIR/terminal/.colors.csv" ~
 
 #if [ "$(uname)" == "Darwin" ]; then
 #    ln -sfv "$DOTFILES_DIR/etc/mackup/.mackup.cfg" ~
-#    if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then
-#        . "$DOTFILES_DIR/install/osx.sh"
-#    fi
-#fi
+    if [ -f "$DOTFILES_DIR/install/osx.sh" ]; then
+        . "$DOTFILES_DIR/install/osx.sh"
+    fi
+fi
