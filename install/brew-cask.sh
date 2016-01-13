@@ -6,19 +6,15 @@ apps=(
     evernote
     filezilla
     firefox
-    google-drive
     google-chrome
     opera
     screenflow
-    skyfonts
     skype
     slack
-    sourcetree
     spectacle
     spotify
     sublime-text3
     tweetdeck
-    vagrant
     virtualbox
     vlc
 )
