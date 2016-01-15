@@ -11,7 +11,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Set computer name (as done via System Preferences → Sharing)
 sudo scutil --set ComputerName "raphaelfabeni"
 sudo scutil --set HostName "raphaelfabeni"
-sudo scutil --set LocalHostName "raphaelfabeni"
+sudo scutil --set LocalHostName "fabeni-macbook"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "raphaelfabeni"
 
 # Use Dark theme
@@ -33,7 +33,7 @@ defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 # Menu bar: show battery percentage
-defaults write com.apple.menuextra.battery -bool true
+defaults write com.apple.menuextra.battery ShowPercent -bool true
 
 # Disable opening and closing window animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
@@ -209,7 +209,7 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 # Always open everything in Finder's list view.
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `Flwv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 
 # Disable the warning before emptying the Trash
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
@@ -224,6 +224,9 @@ sudo nvram boot-args="mbasd=1"
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict General -bool true OpenWith -bool true Privileges -bool true
 
+# Set Finder path bar to be relative to the home directory
+defaults write com.apple.finder PathBarRootAtHome -bool true
+
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
@@ -231,8 +234,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict General -bool true Ope
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
 
-# Put Dock on the bottom side of the screen
-defaults write com.apple.Dock orientation -string bottom
+# Put Dock on the left side of the screen
+defaults write com.apple.Dock orientation -string left
 
 # Change minimize/maximize window effect of the list "genie, suck and scale"
 defaults write com.apple.dock mineffect -string "genie"
@@ -282,15 +285,15 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # 12: Notification Center
 
 # Top left screen corner
-defaults write com.apple.dock wvous-tl-corner -int 0
+defaults write com.apple.dock wvous-tl-corner -int 3
 defaults write com.apple.dock wvous-tl-modifier -int 0
 
 # Top right screen corner
-defaults write com.apple.dock wvous-tr-corner -int 0
+defaults write com.apple.dock wvous-tr-corner -int 4
 defaults write com.apple.dock wvous-tr-modifier -int 0
 
 # Bottom left screen corner → Display to sleep
-defaults write com.apple.dock wvous-bl-corner -int 10
+defaults write com.apple.dock wvous-bl-corner -int 11
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Bottom right screen corner
