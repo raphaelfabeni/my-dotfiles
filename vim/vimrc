@@ -3,14 +3,14 @@
 " =======================================
 
 " initial settings (specific for vundle)
-set nocompatible
-filetype off
+#set nocompatible
+#filetype off
 
 " set vundle as plugin manager
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-filetype plugin indent on
+#set rtp+=~/.vim/bundle/vundle/
+#call vundle#rc()
+#Bundle 'gmarik/vundle'
+#filetype plugin indent on
 
 " =======================================
 " Plugins
